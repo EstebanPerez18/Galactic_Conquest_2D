@@ -566,6 +566,7 @@ PlayerSettings:
       daydreamIconForeground: {fileID: 0}
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
+    Collab: 0
     UNet: 1
   luminIcon:
     m_Name: 
@@ -586,10 +587,10 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 87d5ac89-d04c-4928-a01f-33caf895eae3
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: Galactic Conquest 2D
+  organizationId: unity_bs7jho3z6kusna
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
