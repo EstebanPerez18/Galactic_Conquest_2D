@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Planet Selection.unity
     guid: fc893dc88b27bf242b135bc16cce6ba8
   - enabled: 1
-    path: Assets/Scenes/Stronghold.unity
+    path: Assets/Scenes/Stronghold 1.unity
     guid: 855eb4db4554ba34183174cec7ed7f4d
   m_configObjects: {}
