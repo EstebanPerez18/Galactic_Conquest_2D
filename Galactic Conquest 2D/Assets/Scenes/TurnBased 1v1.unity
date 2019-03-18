@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 119766417}
   - component: {fileID: 119766416}
   m_Layer: 0
-  m_Name: Hero2Blue Hp
+  m_Name: player2Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,12 +177,12 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 0
-    m_AlignByGeometry: 0
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Hero2 Health:'
+  m_Text: 'Hero2 Health: 100'
 --- !u!222 &119766417
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -306,23 +306,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80bc1e53e19a3794cb5ba589fbcc0a8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 048b664eb5a05044aaca2ae209f0d729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnText: {fileID: 1462553611}
-  playerText: {fileID: 2115657022}
-  enemyText: {fileID: 1240122014}
-  player2Text: {fileID: 119766416}
-  player3Text: {fileID: 833896701}
-  enemy2Text: {fileID: 1253888243}
-  enemy3Text: {fileID: 1423438559}
-  playerAttackText: {fileID: 394393380}
-  playerAttack2Text: {fileID: 1325022003}
-  playerAttack3Text: {fileID: 864613524}
-  canAttack: {fileID: 970745383}
-  enemyStatus: {fileID: 1744117018}
-  enemy2Status: {fileID: 797156125}
-  enemy3Status: {fileID: 1621223115}
+  enemy1TextHP: {fileID: 1744117018}
+  enemy2TextHP: {fileID: 1253888243}
+  enemy3TextHP: {fileID: 1423438559}
+  meleeTextHP: {fileID: 2115657022}
+  rangedTextHP: {fileID: 119766416}
+  healerTextHP: {fileID: 833896701}
+  turn: {fileID: 1462553611}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -617,7 +610,7 @@ GameObject:
   - component: {fileID: 806995594}
   m_Layer: 0
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -648,7 +641,7 @@ RectTransform:
   - {fileID: 1744117017}
   - {fileID: 1621223114}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -727,7 +720,7 @@ GameObject:
   - component: {fileID: 833896702}
   - component: {fileID: 833896701}
   m_Layer: 0
-  m_Name: Hero3White Hp
+  m_Name: player3Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -785,7 +778,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Hero3 Health:'
+  m_Text: 'Hero3 Health: 100'
 --- !u!222 &833896702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -899,23 +892,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 938855571}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80bc1e53e19a3794cb5ba589fbcc0a8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 048b664eb5a05044aaca2ae209f0d729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnText: {fileID: 1462553611}
-  playerText: {fileID: 2115657022}
-  enemyText: {fileID: 1240122014}
-  player2Text: {fileID: 0}
-  player3Text: {fileID: 0}
-  enemy2Text: {fileID: 0}
-  enemy3Text: {fileID: 0}
-  playerAttackText: {fileID: 0}
-  playerAttack2Text: {fileID: 0}
-  playerAttack3Text: {fileID: 0}
-  canAttack: {fileID: 0}
-  enemyStatus: {fileID: 0}
-  enemy2Status: {fileID: 0}
-  enemy3Status: {fileID: 0}
+  enemy1TextHP: {fileID: 1240122014}
+  enemy2TextHP: {fileID: 1253888243}
+  enemy3TextHP: {fileID: 1423438559}
+  meleeTextHP: {fileID: 2115657022}
+  rangedTextHP: {fileID: 119766416}
+  healerTextHP: {fileID: 833896701}
+  turn: {fileID: 1462553611}
 --- !u!4 &938855573
 Transform:
   m_ObjectHideFlags: 0
@@ -1007,7 +993,7 @@ Transform:
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &970745381
 GameObject:
@@ -1237,7 +1223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Enemy Health:'
+  m_Text: 'Enemy Health: 100'
 --- !u!222 &1253888244
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1395,7 +1381,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Enemy Health:'
+  m_Text: 'Enemy Health: 100'
 --- !u!222 &1423438560
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2075,7 +2061,7 @@ GameObject:
   - component: {fileID: 2115657021}
   - component: {fileID: 2115657022}
   m_Layer: 0
-  m_Name: Hero1Orange hp
+  m_Name: playerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
