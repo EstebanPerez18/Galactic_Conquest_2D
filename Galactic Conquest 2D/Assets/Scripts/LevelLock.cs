@@ -14,7 +14,7 @@ public class LevelLock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayersPrefs.DeleteAll();
+        //PlayersPrefs.DeleteAll();
         LevelLocks();
     }
 

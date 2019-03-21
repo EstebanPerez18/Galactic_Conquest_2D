@@ -34,7 +34,9 @@ public class threev3Combat : MonoBehaviour
     bool meleeTurn = true;
     bool rangedTurn = true;
     bool healerTurn = true;
+    bool enemyTurn = true;
 
+    int randomHero = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -47,32 +49,6 @@ public class threev3Combat : MonoBehaviour
     void Update()
     {
         StartCoroutine(spaceBetweenTurns(meleeTurn, rangedTurn));
-        // rangedAttackTurn();
-        //healerAttackTurn();
-        /* if(meleeTurn != false)
-             meleeTurn = true;
-             if (Input.GetKeyDown(KeyCode.Q) && meleeTurn)
-             {
-                 Debug.Log("q was pressed.");
-                 enemy1Health = meleeAttack(enemy1Health);
-                 enemy1TextHP.text = "Health: " + enemy1Health.ToString();
-             meleeTurn = false;
-             }
-             else if (Input.GetKeyDown("w") && meleeTurn)
-             {
-                 Debug.Log("w was pressed.");
-                 enemy2Health = meleeAttack(enemy2Health);
-                 enemy2TextHP.text = "Health: " + enemy2Health.ToString();
-
-             }
-             else if (Input.GetKeyDown("e")&& meleeTurn)
-             {
-                 enemy3Health = meleeAttack(enemy3Health);
-                 enemy3TextHP.text = "Health: " + enemy3Health.ToString();
-
-             }
-         */
-
 
     }
     //Melees Turn
@@ -141,7 +117,7 @@ public class threev3Combat : MonoBehaviour
             Debug.Log("w was pressed.");
             enemy2Health = healerAttack(enemy2Health);
             enemy2TextHP.text = "Health: " + enemy2Health.ToString();
-            meleeTurn = false;
+            healerTurn = false;
 
         }
         if (Input.GetKeyDown("e") && healerTurn)
@@ -208,6 +184,38 @@ public class threev3Combat : MonoBehaviour
             rangedTurn = false;
         }
     }
+    //Enemy will attack a random hero (for now) 
+    bool enemyAttackTurn(int randomHero)
+    {
+        //Will switch meleeTurn to false once over
+        if (enemyTurn != false)
+        {
+            enemyTurn = true;
+            turn.text = "Enemy is now attacking!";
+        }
+        if (randomHero == 1 && enemyTurn)
+        {
+            turn.text = "Enemy is attacking  melee!";
+            meleeHealth = enemyAttack(meleeHealth);
+            meleeTextHP.text = "Health: " + meleeHealth.ToString();
+            enemyTurn = false;
+        }
+        if (randomHero == 2 && enemyTurn)
+        {
+            turn.text = "Enemy is attacking ranged!";
+            rangedHealth = enemyAttack(rangedHealth);
+            rangedTextHP.text = "Health: " + rangedHealth.ToString();
+            enemyTurn = false;
+        }
+        if (randomHero == 3 && enemyTurn)
+        {
+            turn.text = "Enemy is attacking healer!";
+            healerHealth = enemyAttack(healerHealth);
+            healerTextHP.text = "Health: " + healerHealth.ToString();
+            enemyTurn = false;
+        }
+        return enemyTurn;
+    }
 
 
 
@@ -236,6 +244,12 @@ public class threev3Combat : MonoBehaviour
         health += heal;
         return health;
     }
+    int enemyAttack(int health)
+    {
+        int damage = Random.Range(15, 20);
+        health -= damage;
+        return health;
+    }
 
 
 
@@ -246,18 +260,22 @@ public class threev3Combat : MonoBehaviour
         if (!meleesTurn)
         {
             turn.text = "Please wait";
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
             rangedAttackTurn();
             if (!meleesTurn && !rangedsTurn)
             {
                 turn.text = "Please wait";
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(1);
                 healerAttackTurn();
             }
         }
-        if (!meleeTurn && !rangedTurn && !healerTurn)
+        if (!meleeTurn && !rangedTurn && !healerTurn && enemyTurn)
         {
             turn.text = ("Player turn now over!");
+            yield return new WaitForSeconds(1);
+            randomHero = Random.Range(1, 4);
+            Debug.Log(randomHero);
+            enemyAttackTurn(randomHero);
         }
     }
 }
