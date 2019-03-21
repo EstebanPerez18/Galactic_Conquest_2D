@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stronghold 1.unity
     guid: 855eb4db4554ba34183174cec7ed7f4d
+  - enabled: 1
+    path: Assets/Scenes/TurnBased 1v1.unity
+    guid: 773c431e301d5e04ba9c4a8de54cb9db
   m_configObjects: {}
