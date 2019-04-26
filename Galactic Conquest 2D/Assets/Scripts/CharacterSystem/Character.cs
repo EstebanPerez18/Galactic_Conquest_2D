@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using MichaelWolfGames.DamageSystem;
 /// <summary>
 /// This represents ANY character in the game.
 /// - Can attack an "enemy"
@@ -10,6 +10,36 @@ using System.Collections;
 /// </summary>
 public abstract class Character : MonoBehaviour
 {
-    public abstract void TakeTurn();
-    public bool isDead = false;
+    public HealthManager healthManager;
+
+    public bool isTakingTurn = false;
+    public abstract void OnStartTurn();
+    public abstract void UpdateTurn();
+    public abstract void OnEndTurn();
+
+    public virtual void Start()
+    {
+        Debug.Log("Default Start");
+        
+    }
+
+
+
+    public IEnumerator CoTakeTurn()
+    {
+        if (healthManager.IsDead == false)
+        {
+            isTakingTurn = true;
+            // Enter State
+            OnStartTurn();
+            while (isTakingTurn)
+            {
+                // Update State
+                UpdateTurn();
+                //done = !meleeAttackTurn();
+                yield return null;
+            }
+            OnEndTurn();
+        }
+    }
 }

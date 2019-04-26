@@ -1,21 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MeleeCharacter : Character
+public abstract class MeleeCharacter : Character
 {
-    public override void TakeTurn()
-    {
-        Debug.Log("Melee Turn");
-    }
-    // Use this for initialization
-    void Start()
-    {
 
+
+    public override void Start()
+    {
+        base.Start();
+        Debug.Log("Melee Start");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
+        // Test
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            healthManager.ApplyDamage(25);
+        }
     }
+
+    //public override void OnStartTurn()
+    //{
+    //    Debug.Log("Start Melee Turn");
+    //}
+
+    //public override void UpdateTurn()
+    //{
+    //    Debug.Log("Melee Turn");
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        isTakingTurn = false;
+    //    }
+    //}
+
+    //public override void OnEndTurn()
+    //{
+    //    Debug.Log("End Melee Turn");
+    //}
 }
