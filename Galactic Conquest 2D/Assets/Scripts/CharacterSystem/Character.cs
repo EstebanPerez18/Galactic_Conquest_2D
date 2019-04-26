@@ -8,18 +8,8 @@ using System.Collections;
 /// - Have Health, take damage, die.
 /// - Have a turn.
 /// </summary>
-public class Character : MonoBehaviour
+public abstract class Character : MonoBehaviour
 {
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public abstract void TakeTurn();
+    public bool isDead = false;
 }
