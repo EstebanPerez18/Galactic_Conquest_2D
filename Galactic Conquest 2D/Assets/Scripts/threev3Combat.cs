@@ -35,6 +35,8 @@ public class threev3Combat : MonoBehaviour
     bool rangedTurn = true;
     bool healerTurn = true;
     bool enemyTurn = true;
+    bool enemy2Turn = true;
+    bool enemy3Turn = true;
 
     int randomHero = 0;
 
@@ -43,12 +45,12 @@ public class threev3Combat : MonoBehaviour
     {
         Debug.Log("Hello");
 
+        StartCoroutine(spaceBetweenTurns(meleeTurn, rangedTurn,healerTurn,enemyTurn,enemy2Turn,enemy3Turn));
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(spaceBetweenTurns(meleeTurn, rangedTurn));
 
     }
     //Melees Turn
@@ -61,33 +63,33 @@ public class threev3Combat : MonoBehaviour
             turn.text = "Melee may now attack! (Q W E)";
         }
 
-            //Melee could attack with Q W or E to hit respective enemy
-            if (Input.GetKeyDown(KeyCode.Q) && meleeTurn)
-            {
-                Debug.Log("q was pressed.");
-                //Sets health to health - damaged taken
-                enemy1Health = meleeAttack(enemy1Health);
-                //Displays new current health to screen
-                enemy1TextHP.text = "Health: " + enemy1Health.ToString();
-                //Sets melee turn to false once damage is done
-                meleeTurn = false;
+        //Melee could attack with Q W or E to hit respective enemy
+        if (Input.GetKeyDown(KeyCode.Q) && meleeTurn)
+        {
+            Debug.Log("q was pressed.");
+            //Sets health to health - damaged taken
+            enemy1Health = meleeAttack(enemy1Health);
+            //Displays new current health to screen
+            enemy1TextHP.text = "Health: " + enemy1Health.ToString();
+            //Sets melee turn to false once damage is done
+            meleeTurn = false;
             return meleeTurn;
-            }
-            if (Input.GetKeyDown("w") && meleeTurn)
-            {
-                Debug.Log("w was pressed.");
-                enemy2Health = meleeAttack(enemy2Health);
-                enemy2TextHP.text = "Health: " + enemy2Health.ToString();
-                meleeTurn = false;
+        }
+        if (Input.GetKeyDown("w") && meleeTurn)
+        {
+            Debug.Log("w was pressed.");
+            enemy2Health = meleeAttack(enemy2Health);
+            enemy2TextHP.text = "Health: " + enemy2Health.ToString();
+            meleeTurn = false;
             return meleeTurn;
-            }
-            if (Input.GetKeyDown("e") && meleeTurn)
-            {
-                enemy3Health = meleeAttack(enemy3Health);
-                enemy3TextHP.text = "Health: " + enemy3Health.ToString();
-                meleeTurn = false;
-                return meleeTurn;
-            }
+        }
+        if (Input.GetKeyDown("e") && meleeTurn)
+        {
+            enemy3Health = meleeAttack(enemy3Health);
+            enemy3TextHP.text = "Health: " + enemy3Health.ToString();
+            meleeTurn = false;
+            return meleeTurn;
+        }
         return meleeTurn;
             
     }
@@ -251,12 +253,29 @@ public class threev3Combat : MonoBehaviour
         return health;
     }
 
-
-
-    IEnumerator spaceBetweenTurns(bool meleesTurn ,bool rangedsTurn)
+    private IEnumerator CoMeleeAttackTurnState()
     {
+        // Enter State
 
-        meleeAttackTurn();
+        bool done = false;
+        while(!done)
+        {
+            // Update State
+            done = !meleeAttackTurn();
+            yield return null;
+        }
+
+        // Exit State
+
+    }
+
+
+    IEnumerator spaceBetweenTurns(bool meleesTurn ,bool rangedsTurn,bool healerTurn,bool enemyTurn,bool enemy2Turn,bool enemy3Turn)
+    {
+        Debug.Log("Starting Turn Sequence");
+        yield return StartCoroutine(CoMeleeAttackTurnState());
+        Debug.Log("Melee Turn finished");
+        // meleeAttackTurn();
         if (!meleesTurn)
         {
             turn.text = "Please wait";
@@ -272,10 +291,47 @@ public class threev3Combat : MonoBehaviour
         if (!meleeTurn && !rangedTurn && !healerTurn && enemyTurn)
         {
             turn.text = ("Player turn now over!");
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(3);
             randomHero = Random.Range(1, 4);
             Debug.Log(randomHero);
             enemyAttackTurn(randomHero);
+            if (enemy2Turn)
+            {
+                turn.text = ("enemy 2 attacking");
+                yield return new WaitForSeconds(3);
+                randomHero = Random.Range(1, 4);
+                Debug.Log(randomHero);
+                enemyAttackTurn(randomHero);
+            }
+            if (enemy3Turn)
+            {
+                turn.text = ("Enemy 3 attacking");
+                yield return new WaitForSeconds(3);
+                randomHero = Random.Range(1, 4);
+                Debug.Log(randomHero);
+                enemyAttackTurn(randomHero);
+            }
+        }
+        if (!meleeTurn && !rangedTurn && !healerTurn)
+        {
+            if (!meleeTurn && meleeHealth > 0)
+            {
+                meleeTurn = true;
+            }
+            if (!rangedTurn && rangedHealth > 0)
+            {
+                rangedTurn = true;
+            }
+            if (!healerTurn && healerHealth > 0)
+            {
+                healerTurn = true;
+            }
+            if(enemy1Health > 0)
+                enemyTurn = true;
+            if (enemy2Health > 0)
+                enemy2Turn = true;
+            if (enemy3Health > 0)
+                enemy3Turn = true;
         }
     }
 }
