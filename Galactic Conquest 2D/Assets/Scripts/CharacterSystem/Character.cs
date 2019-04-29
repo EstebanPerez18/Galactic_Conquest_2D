@@ -11,6 +11,11 @@ using MichaelWolfGames.DamageSystem;
 public abstract class Character : MonoBehaviour
 {
     public HealthManager healthManager;
+    public int currentHealth = 100;
+    public int enemyChosen = 0;
+
+    public Character targetCharacter;
+    public CombatController combatController;
 
     public bool isTakingTurn = false;
     public abstract void OnStartTurn();

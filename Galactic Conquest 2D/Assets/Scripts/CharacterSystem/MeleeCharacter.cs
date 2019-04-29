@@ -2,9 +2,7 @@
 using System.Collections;
 
 public abstract class MeleeCharacter : Character
-{
-
-
+{   
     public override void Start()
     {
         base.Start();
@@ -16,7 +14,7 @@ public abstract class MeleeCharacter : Character
         // Test
         if(Input.GetKeyDown(KeyCode.T))
         {
-            healthManager.ApplyDamage(25);
+            healthManager.ApplyDamage(Random.Range(10,15));
         }
     }
 
