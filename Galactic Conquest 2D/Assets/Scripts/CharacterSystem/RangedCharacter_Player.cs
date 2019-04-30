@@ -1,39 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MeleeCharacter_Player : MeleeCharacter
+public class RangedCharacter_Player : RangedCharacter
 {
 
     public override void OnStartTurn()
     {
-        Debug.Log("Start Melee Turn");
+        Debug.Log("Start Ranged Player Turn");
     }
 
     public override void UpdateTurn()
     {
-        Debug.Log("Melee Turn");
+        Debug.Log("Ranged Player Turn");
         if (Input.GetKeyDown(KeyCode.Q))
         {
             targetCharacter = combatController.enemyCharacters[0];
-            targetCharacter.healthManager.ApplyDamage(Random.Range(10,15));
+            targetCharacter.healthManager.ApplyDamage(Random.Range(15,20));
             isTakingTurn = false;
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
             targetCharacter = combatController.enemyCharacters[1];
-            targetCharacter.healthManager.ApplyDamage(Random.Range(10, 15));
+            targetCharacter.healthManager.ApplyDamage(Random.Range(15, 20));
             isTakingTurn = false;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
             targetCharacter = combatController.enemyCharacters[2];
-            targetCharacter.healthManager.ApplyDamage(Random.Range(10, 15));
+            targetCharacter.healthManager.ApplyDamage(Random.Range(15, 20));
             isTakingTurn = false;
         }
     }
 
     public override void OnEndTurn()
     {
-        Debug.Log("End Melee Turn");
+        Debug.Log("End Ranged player Turn");
     }
 }

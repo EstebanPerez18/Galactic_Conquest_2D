@@ -1,21 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MeleeCharacter_Enemy : MeleeCharacter
+public class HealerCharacter_Enemy : HealerCharacter
 {
     public override void OnStartTurn()
     {
-        Debug.Log("Start Melee Turn");
+        Debug.Log("Start Enemy Healer Turn");
     }
 
     public override void UpdateTurn()
     {
-        Debug.Log("Enemy Melee Turn");
+        Debug.Log("Enemy Healer");
         // AI DECISIONS
-        int random = Random.Range(0, 3);
-        Debug.Log(random);
         targetCharacter = combatController.playerCharacters[Random.Range(0, 3)];
-        targetCharacter.healthManager.ApplyDamage(Random.Range(10, 15));
+        targetCharacter.healthManager.ApplyDamage(Random.Range(5, 10));
         isTakingTurn = false;
 
 
@@ -23,6 +21,6 @@ public class MeleeCharacter_Enemy : MeleeCharacter
 
     public override void OnEndTurn()
     {
-        Debug.Log("End Melee Turn");
+        Debug.Log("End Enemy Healer");
     }
 }

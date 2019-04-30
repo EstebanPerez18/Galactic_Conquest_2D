@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class HealerCharacter : Character
+public abstract class RangedCharacter : Character
 {
     public override void Start()
     {
@@ -17,5 +17,4 @@ public abstract class HealerCharacter : Character
             healthManager.ApplyDamage(25);
         }
     }
-
 }
