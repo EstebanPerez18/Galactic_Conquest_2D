@@ -70,7 +70,6 @@ public class threev3Combat : MonoBehaviour
             //Sets health to health - damaged taken
             enemy1Health = meleeAttack(enemy1Health);
             //Displays new current health to screen
-            enemy1TextHP.text = "Health: " + enemy1Health.ToString();
             //Sets melee turn to false once damage is done
             meleeTurn = false;
             return meleeTurn;

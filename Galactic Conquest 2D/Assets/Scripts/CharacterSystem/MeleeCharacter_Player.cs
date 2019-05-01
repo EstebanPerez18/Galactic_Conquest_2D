@@ -4,6 +4,7 @@ using System.Collections;
 public class MeleeCharacter_Player : MeleeCharacter
 {
 
+
     public override void OnStartTurn()
     {
         Debug.Log("Start Melee Turn");
@@ -15,7 +16,7 @@ public class MeleeCharacter_Player : MeleeCharacter
         if (Input.GetKeyDown(KeyCode.Q))
         {
             targetCharacter = combatController.enemyCharacters[0];
-            targetCharacter.healthManager.ApplyDamage(Random.Range(10,15));
+            targetCharacter.healthManager.ApplyDamage(Random.Range(10, 15));
             isTakingTurn = false;
         }
         if (Input.GetKeyDown(KeyCode.W))
