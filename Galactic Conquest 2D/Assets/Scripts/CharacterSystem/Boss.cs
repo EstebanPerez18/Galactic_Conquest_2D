@@ -15,7 +15,7 @@ public class Boss : MeleeCharacter
         int random = Random.Range(0, 3);
         Debug.Log(random);
         targetCharacter = combatController.playerCharacters[Random.Range(0, 3)];
-        targetCharacter.healthManager.ApplyDamage(Random.Range(20,35));
+        targetCharacter.healthManager.ApplyDamage(Random.Range(5,15));
         isTakingTurn = false;
 
 
