@@ -18,7 +18,6 @@ public class threev3Combat : MonoBehaviour
     public Text healerTextHP;
 
     //Middle text displaying turn
-    public Text turn;
 
 
     //Health of each hero starting at 100
@@ -60,7 +59,6 @@ public class threev3Combat : MonoBehaviour
         if (meleeTurn != false)
         {
             meleeTurn = true;
-            turn.text = "Melee may now attack! (Q W E)";
         }
 
         //Melee could attack with Q W or E to hit respective enemy
@@ -99,7 +97,6 @@ public class threev3Combat : MonoBehaviour
         if (healerTurn != false)
         {
             healerTurn = true;
-            turn.text = "Healer may now attack! (Q W E) or heal! (1 2 3)";
         }
 
             //Melee could attack with Q W or E to hit respective enemy
@@ -156,7 +153,6 @@ public class threev3Combat : MonoBehaviour
         if (rangedTurn != false)
         {
             rangedTurn = true;
-            turn.text = "Ranged may now attack! (Q W E)";
         }
 
             //Melee could attack with Q W or E to hit respective enemy
@@ -192,25 +188,21 @@ public class threev3Combat : MonoBehaviour
         if (enemyTurn != false)
         {
             enemyTurn = true;
-            turn.text = "Enemy is now attacking!";
         }
         if (randomHero == 1 && enemyTurn)
         {
-            turn.text = "Enemy is attacking  melee!";
             meleeHealth = enemyAttack(meleeHealth);
             meleeTextHP.text = "Health: " + meleeHealth.ToString();
             enemyTurn = false;
         }
         if (randomHero == 2 && enemyTurn)
         {
-            turn.text = "Enemy is attacking ranged!";
             rangedHealth = enemyAttack(rangedHealth);
             rangedTextHP.text = "Health: " + rangedHealth.ToString();
             enemyTurn = false;
         }
         if (randomHero == 3 && enemyTurn)
         {
-            turn.text = "Enemy is attacking healer!";
             healerHealth = enemyAttack(healerHealth);
             healerTextHP.text = "Health: " + healerHealth.ToString();
             enemyTurn = false;
@@ -277,34 +269,29 @@ public class threev3Combat : MonoBehaviour
         // meleeAttackTurn();
         if (!meleesTurn)
         {
-            turn.text = "Please wait";
             yield return new WaitForSeconds(1);
             rangedAttackTurn();
             if (!meleesTurn && !rangedsTurn)
             {
-                turn.text = "Please wait";
                 yield return new WaitForSeconds(1);
                 healerAttackTurn();
             }
         }
         if (!meleeTurn && !rangedTurn && !healerTurn && enemyTurn)
         {
-            turn.text = ("Player turn now over!");
             yield return new WaitForSeconds(3);
             randomHero = Random.Range(1, 4);
             Debug.Log(randomHero);
             enemyAttackTurn(randomHero);
             if (enemy2Turn)
             {
-                turn.text = ("enemy 2 attacking");
                 yield return new WaitForSeconds(3);
                 randomHero = Random.Range(1, 4);
                 Debug.Log(randomHero);
                 enemyAttackTurn(randomHero);
             }
             if (enemy3Turn)
-            {
-                turn.text = ("Enemy 3 attacking");
+            { 
                 yield return new WaitForSeconds(3);
                 randomHero = Random.Range(1, 4);
                 Debug.Log(randomHero);

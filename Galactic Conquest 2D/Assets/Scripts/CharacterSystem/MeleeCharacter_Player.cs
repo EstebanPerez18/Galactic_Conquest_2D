@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MeleeCharacter_Player : MeleeCharacter
 {
+    public Text turnDisplay;
 
 
     public override void OnStartTurn()
     {
         Debug.Log("Start Melee Turn");
+        turnDisplay.text = "Melee Hero attacking!";
     }
 
     public override void UpdateTurn()
@@ -36,5 +39,6 @@ public class MeleeCharacter_Player : MeleeCharacter
     public override void OnEndTurn()
     {
         Debug.Log("End Melee Turn");
+        turnDisplay.text = "";
     }
 }
