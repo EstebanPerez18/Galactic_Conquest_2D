@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class RangedCharacter_Player : RangedCharacter
 {
-
+    public Text turnDisplay;
     public override void OnStartTurn()
     {
         Debug.Log("Start Ranged Player Turn");
+        turnDisplay.text = "Ranged Hero attacking!";
     }
 
     public override void UpdateTurn()
@@ -35,5 +36,6 @@ public class RangedCharacter_Player : RangedCharacter
     public override void OnEndTurn()
     {
         Debug.Log("End Ranged player Turn");
+        turnDisplay.text = "";
     }
 }

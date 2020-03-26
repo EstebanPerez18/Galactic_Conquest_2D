@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TurnBased 1v1.unity
     guid: 773c431e301d5e04ba9c4a8de54cb9db
+  - enabled: 1
+    path: Assets/Scenes/Instructions.unity
+    guid: 035147f768d891a4c954b63ab1d96dfa
+  - enabled: 1
+    path: Assets/Scenes/turnbasedBoss.unity
+    guid: 30ff1710389d46d4c85c29158068a9ad
   m_configObjects: {}

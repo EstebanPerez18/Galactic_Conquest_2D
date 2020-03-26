@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 /// <summary>
 /// Control combat of 2 sets of characters
 /// State machine turn control
@@ -10,6 +11,7 @@ public class CombatController : MonoBehaviour
 {
     public Character[] playerCharacters;
     public Character[] enemyCharacters;
+    public Text turnDisplay;
     // Use this for initialization
     void Start()
     {
@@ -35,6 +37,7 @@ public class CombatController : MonoBehaviour
                 bool won = true;
                 foreach (Character enemy in enemyCharacters)
                 {
+                    turnDisplay.text = "Enemies are attacking!";
                     if (!enemy.healthManager.IsDead)
                         won = false;
                 }

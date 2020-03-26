@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class HealerCharacter_Player : HealerCharacter
 {
-
+    public Text turnDisplay;
     public override void OnStartTurn()
     {
         Debug.Log("Start Healer Player Turn");
+        turnDisplay.text = "Healer Hero attacking!";
     }
 
     public override void UpdateTurn()
@@ -55,6 +56,7 @@ public class HealerCharacter_Player : HealerCharacter
     public override void OnEndTurn()
     {
         Debug.Log("End Healer player Turn");
+        turnDisplay.text = "";
     }
 }
 
